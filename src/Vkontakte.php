@@ -92,7 +92,7 @@ class Vkontakte extends AbstractProvider
 
         $userId = $token->getResourceOwnerId();
         $tokenValue = $token->getToken();
-        return "https://api.vk.com/method/users.get?user_id={$userId}&fields="
+        return "https://api.vk.com/method/users.get?fields="
             . implode($this->getScopeSeparator(), $fields) . "&access_token={$tokenValue}&v=" . $this->version;
     }
 
@@ -123,7 +123,7 @@ class Vkontakte extends AbstractProvider
     {
         if (isset($data['error'])) {
             throw new IdentityProviderException(
-                $data['error_description'] ?: $response->getReasonPhrase(),
+                $data['error_msg'] ?: $response->getReasonPhrase(),
                 $response->getStatusCode(),
                 $response
             );

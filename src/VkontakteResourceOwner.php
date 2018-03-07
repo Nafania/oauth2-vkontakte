@@ -15,7 +15,7 @@ class VkontakteResourceOwner implements ResourceOwnerInterface
      */
     public function __construct(array $response, AccessToken $token)
     {
-        $this->data = $response['response'][0];
+        $this->data = $response['response'][0] ?? [];
         if (isset($token->email))
             $this->data['email'] = $token->email;
     }
