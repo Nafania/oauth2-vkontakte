@@ -16,8 +16,9 @@ class VkontakteResourceOwner implements ResourceOwnerInterface
     public function __construct(array $response, AccessToken $token)
     {
         $this->data = $response['response'][0] ?? [];
-        if (isset($token->email))
+        if (isset($token->email)) {
             $this->data['email'] = $token->email;
+        }
     }
     /**
      * Returns the ID for the user as a string if present.
@@ -26,7 +27,7 @@ class VkontakteResourceOwner implements ResourceOwnerInterface
      */
     public function getId()
     {
-        return $this->getField('uid');
+        return $this->getField('id');
     }
     /**
      * Returns the name for the user as a string if present.

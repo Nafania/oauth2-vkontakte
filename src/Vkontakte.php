@@ -90,7 +90,6 @@ class Vkontakte extends AbstractProvider
             'verified'
         ];
 
-        $userId = $token->getResourceOwnerId();
         $tokenValue = $token->getToken();
         return "https://api.vk.com/method/users.get?fields="
             . implode($this->getScopeSeparator(), $fields) . "&access_token={$tokenValue}&v=" . $this->version;
