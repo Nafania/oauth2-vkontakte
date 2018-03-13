@@ -123,7 +123,7 @@ class Vkontakte extends AbstractProvider
     {
         if (isset($data['error'])) {
             throw new IdentityProviderException(
-                $data['error_msg'] ?: $response->getReasonPhrase(),
+                $data['error_msg'] ?? $response->getReasonPhrase(),
                 $response->getStatusCode(),
                 $response
             );
